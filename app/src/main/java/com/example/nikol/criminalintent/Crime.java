@@ -1,5 +1,6 @@
 package com.example.nikol.criminalintent;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class Crime {
@@ -21,7 +22,27 @@ public class Crime {
 
     public Crime() {
         mId = UUID.randomUUID();
+        mDate = new Date();
     }
 
+    private boolean mSolved;
+
+    public boolean isSolved() {
+        return mSolved;
+    }
+
+    public void setSolved(boolean solved) {
+        mSolved = solved;
+    }
+
+    private Date mDate;
+
+    public Date getDate() {
+        return mDate;
+    }
+
+    public void setDate(Date date) {
+        mDate = date;
+    }
 }
 
