@@ -1,5 +1,7 @@
 package com.example.nikol.criminalintent;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +45,7 @@ public class CrimeListFragment extends Fragment {
         private TextView mDateTextView;
         private CheckBox mSolvedCheckBox;
         private Button mButtonUp;
-
+        private ImageView mImageView;
         private Crime mCrime;
 
         public CrimeHolder(View itemView) {
@@ -58,6 +61,10 @@ public class CrimeListFragment extends Fragment {
                     Toast.makeText(getActivity(),"Button Up Clicked!", Toast.LENGTH_SHORT).show();
                 }
             });
+            mImageView = (ImageView) itemView.findViewById(R.id.list_item_crime_imageView);
+            //Bitmap bitmap = Bitmap.createBitmap();
+
+            //mImageView.setImageBitmap();
         }
 
         public void bindCrime(Crime crime){
@@ -70,6 +77,8 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Toast.makeText(getActivity(),mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
+            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            startActivity(intent);
         }
     }
 
